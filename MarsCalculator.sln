@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsCalculatorAPI", "MarsCalculatorAPI\MarsCalculatorAPI.csproj", "{EB196595-64ED-4AE5-989A-8CCA09A70BDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIConsumer", "APIConsumer\APIConsumer.csproj", "{839052F5-28D0-4908-A908-6377C62837CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB196595-64ED-4AE5-989A-8CCA09A70BDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB196595-64ED-4AE5-989A-8CCA09A70BDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB196595-64ED-4AE5-989A-8CCA09A70BDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB196595-64ED-4AE5-989A-8CCA09A70BDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{839052F5-28D0-4908-A908-6377C62837CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{839052F5-28D0-4908-A908-6377C62837CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{839052F5-28D0-4908-A908-6377C62837CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{839052F5-28D0-4908-A908-6377C62837CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
