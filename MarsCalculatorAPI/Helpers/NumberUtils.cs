@@ -15,9 +15,9 @@ namespace MarsCalculatorAPI.Helpers
             {
                 return Convert.ToInt32(number, 8);
             }
-            catch (Exception ex)
+            catch
             {
-                throw new InvalidNumberException();
+                throw new InvalidNumberException("You provided a value which is not a valid Marsian number!");
             }
 
         }

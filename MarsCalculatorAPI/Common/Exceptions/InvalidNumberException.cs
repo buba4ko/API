@@ -8,8 +8,8 @@ namespace MarsCalculatorAPI.Common.Exceptions
 {
     class InvalidNumberException : BaseMarsCalulatorException
     {
-        public InvalidNumberException()
-            : base("You provided a value which is not a valid Marsian number!")
+        public InvalidNumberException(string message)
+            : base(message)
         {
         }
     }

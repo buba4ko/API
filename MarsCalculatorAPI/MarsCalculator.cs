@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 
 namespace MarsCalculatorAPI
 {
-    //http://prntscr.com/l0ptzw
-
     /// <summary>
     /// A class which performs the basic arithmetic operations in Mars
     /// </summary>
@@ -42,6 +40,7 @@ namespace MarsCalculatorAPI
             return Convert.ToString(decResult, 8);
         }
 
+        // todo: write the summary here
         public string Multiply(string number1, string number2)
         {
             int decNumber1 = NumberUtils.ParseNumber(number1);
@@ -50,11 +49,12 @@ namespace MarsCalculatorAPI
             return Convert.ToString(decResult, 8);
         }
 
+        // todo: write the summary here
         public string Divide(string number1, string number2)
         {
             int decNumber1 = NumberUtils.ParseNumber(number1);
             int decNumber2 = NumberUtils.ParseNumber(number2);
-            int decResult = (int) (decNumber1 * decNumber2);
+            int decResult = (int) (decNumber1 / decNumber2);
             return Convert.ToString(decResult, 8);
         }
     }
