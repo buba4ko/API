@@ -56,6 +56,11 @@ namespace APIConsumer
                 }
                 catch (BaseMarsCalulatorException ex)
                 {
+                    Console.WriteLine("Error in Mars Calculator API: {0}", ex.Message);
+                    continue;
+                }
+                catch (Exception ex)
+                {
                     Console.WriteLine("There is an error: {0}", ex.Message);
                     continue;
                 }

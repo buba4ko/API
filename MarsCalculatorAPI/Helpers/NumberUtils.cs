@@ -1,4 +1,5 @@
 ﻿using MarsCalculatorAPI.Common.Exceptions;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +16,12 @@ namespace MarsCalculatorAPI.Helpers
             {
                 return Convert.ToInt32(number, 8);
             }
-            catch
+            catch(Exception ex)
             {
+                Logger logger = LogManager.GetCurrentClassLogger();
+                string errorMessage = string.Format("Error while parsing the string '{0}'", number);
+                logger.Error(ex, errorMessage);
+
                 throw new InvalidNumberException("You provided a value which is not a valid Marsian number!");
             }
 
