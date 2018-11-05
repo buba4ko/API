@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MarsCalculatorAPI.Common.Exceptions
 {
-    class InvalidNumberException : BaseMarsCalulatorException
+    class InvalidNumberException : MarsCalulatorException
     {
         public InvalidNumberException(string message)
             : base(message)

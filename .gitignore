@@ -1,2 +1,6 @@
 MarsCalculatorAPI/obj/
 APIConsumer/obj/
+/APIConsumer/bin/
+/MarsCalculatorAPI/bin
+/.vs/
+/packages/

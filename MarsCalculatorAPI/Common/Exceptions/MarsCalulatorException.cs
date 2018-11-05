@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace MarsCalculatorAPI.Common.Exceptions
 {
-    public class BaseMarsCalulatorException : Exception
+    public class MarsCalulatorException : Exception
     {
-        public BaseMarsCalulatorException()
+        public MarsCalulatorException()
         {
         }
 
-        public BaseMarsCalulatorException(string message)
+        public MarsCalulatorException(string message)
             : base(message)
         {
         }
 
-        public BaseMarsCalulatorException(string message, Exception innerException)
+        public MarsCalulatorException(string message, Exception innerException)
             : base(message, innerException)
         {
         }
