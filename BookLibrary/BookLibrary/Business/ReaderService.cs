@@ -17,6 +17,12 @@ namespace BookLibrary.Business
         #endregion
 
         #region Public Methods
+        public List<Reader> GetAll()
+        {
+            List<Reader> result = Context.Readers.ToList();
+            return result;
+        }
+
         public Reader GetReaderByID(int ID)
         {
             Reader result = Context.Readers.FirstOrDefault(reader => reader.ID == ID);
@@ -63,7 +69,7 @@ namespace BookLibrary.Business
             Context.SaveChanges();
         }
 
-        public void BorrowBook(int bookID, int readerID)
+        public void BorrowBook(int readerID, int bookID)
         {
             Reader dbReader = this.GetReaderByID(readerID);
             if (dbReader == null)
@@ -78,9 +84,9 @@ namespace BookLibrary.Business
 
             BorrowBook bb = new BorrowBook
             {
-                // no need to se readerID and bookID
+                // no need to set readerID if we add this object as a child object of Reader
                 // ReaderID = readerID,
-                // BookID = bookID,
+                BookID = bookID,
                 TakenDate = DateTime.Now,
                 ReturnDate = DateTime.Now.AddDays(14)
             };
@@ -88,7 +94,7 @@ namespace BookLibrary.Business
             Context.SaveChanges();
         }
 
-        public void ReturnBook(int bookID, int readerID)
+        public void ReturnBook(int readerID, int bookID)
         {
             Reader dbReader = this.GetReaderByID(readerID);
             if (dbReader == null)
