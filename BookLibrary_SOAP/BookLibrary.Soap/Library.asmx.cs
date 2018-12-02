@@ -21,7 +21,7 @@ namespace BookLibrary.Soap
     {
 
         [WebMethod]
-        public List<BookModel> GetAllBooks()
+        public List<BookReturnModel> GetAllBooks()
         {
 			// BookService should be inside a using block, but for simplicity we shall skip it
             BookService bookService = new BookService();
@@ -39,15 +39,15 @@ namespace BookLibrary.Soap
             //    })
             //    .ToList();            
             
-            List<BookModel> result = bookService.GetAll()
-                .Select(b => new BookModel(b))
+            List<BookReturnModel> result = bookService.GetAll()
+                .Select(b => new BookReturnModel(b))
                 .ToList();
 
             return result;
         }
 
         [WebMethod]
-        public BookModel GetBookByID(int bookID)
+        public BookReturnModel GetBookByID(int bookID)
         {
             try
             {
@@ -57,12 +57,12 @@ namespace BookLibrary.Soap
                 if (dbBook == null)
                     throw new Exception($"Could not find a book with the given ID: {bookID}"); // it is better if you throw your custom Exception!
 
-                BookModel result = new BookModel(dbBook);
+                BookReturnModel result = new BookReturnModel(dbBook);
                 return result;
             }
             catch (Exception ex)
             {
-                BookModel result = new BookModel();
+                BookReturnModel result = new BookReturnModel();
                 result.ErrorMessage = ex.GetBaseException().Message;
                 return result;
             }
@@ -115,6 +115,30 @@ namespace BookLibrary.Soap
         }
 
         [WebMethod]
+        public string AddBook2(BookAddModel book)
+        {
+            try
+            {
+                BookService bookService = new BookService();
+
+                Book newBook = new Book();
+                newBook.Author = book.Author;
+                newBook.Description = book.Description;
+                newBook.Genre = book.Genre;
+                newBook.Quantity = book.Quantity;
+                newBook.Title = book.Title;
+                newBook.CreatedDate = DateTime.Now;
+                bookService.AddBook(newBook);
+
+                return "Book is added successfully";
+            }
+            catch (Exception ex)
+            {
+                return $"Failed to add the book. Error: {ex.GetBaseException().Message}";
+            }
+        }
+
+        [WebMethod]
         public string EditBook(int bookID, string title, string author, string genre, string description, int quantity)
         {
             try
@@ -142,7 +166,7 @@ namespace BookLibrary.Soap
         }
 
         [WebMethod]
-        public string EditBook2(BookModel book)
+        public string EditBook2(BookEditModel book)
         {
             try
             {

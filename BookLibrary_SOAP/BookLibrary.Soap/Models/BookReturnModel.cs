@@ -6,7 +6,7 @@ using System.Web;
 
 namespace BookLibrary.Soap.Models
 {
-    public class BookModel
+    public class BookReturnModel
     {
         public int ID { get; set; }
         public string Title { get; set; }
@@ -18,9 +18,9 @@ namespace BookLibrary.Soap.Models
 
         public string ErrorMessage { get; set; }
 
-        public BookModel()
+        public BookReturnModel()
         { }
-        public BookModel(Book book)
+        public BookReturnModel(Book book)
         {
             this.ID = book.ID;
             this.Author = book.Author;

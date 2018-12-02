@@ -11,20 +11,20 @@ namespace BookLibrary.Soap.Models
     /// </summary>
     public class BooksListModel
     {
-        public List<BookModel> BooksList { get; set; }
+        public List<BookReturnModel> BooksList { get; set; }
 
         public string ErrorMessage { get; set; }
 
         public BooksListModel()
         {
-            BooksList = new List<BookModel>();
+            BooksList = new List<BookReturnModel>();
         }
 
         public BooksListModel(List<Book> books)
             : this()
         {
             this.BooksList = books
-                .Select(b => new BookModel(b))
+                .Select(b => new BookReturnModel(b))
                 .ToList();
         }
     }

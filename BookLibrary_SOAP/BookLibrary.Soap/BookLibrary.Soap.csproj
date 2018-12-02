@@ -81,7 +81,9 @@
       <DependentUpon>Library.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Models\BookModel.cs" />
+    <Compile Include="Models\BookEditModel.cs" />
+    <Compile Include="Models\BookAddModel.cs" />
+    <Compile Include="Models\BookReturnModel.cs" />
     <Compile Include="Models\BooksListModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
