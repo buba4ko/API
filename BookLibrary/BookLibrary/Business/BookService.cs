@@ -64,7 +64,7 @@ namespace BookLibrary.Business
             dbBook.Description = book.Description;
             dbBook.Genre = book.Genre;
             dbBook.Quantity = book.Quantity;
-            dbBook.Titile = book.Titile;
+            dbBook.Title = book.Title;
             Context.SaveChanges();
         }
 

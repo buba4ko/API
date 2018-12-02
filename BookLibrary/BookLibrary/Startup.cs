@@ -30,7 +30,7 @@ namespace BookLibrary
                 Book newBook = new Book
                 {
                     Author = "Microsoft",
-                    Titile = "Creating API",
+                    Title = "Creating API",
                     Description = "книга за програмиране",
                     Genre = "programming",
                     Quantity = 1,

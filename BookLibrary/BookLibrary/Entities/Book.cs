@@ -18,7 +18,7 @@ namespace BookLibrary.Entities
 
         [Required]
         [StringLength(200)]
-        public string Titile { get; set; }
+        public string Title { get; set; }
 
         [Required]
         [StringLength(200)]
