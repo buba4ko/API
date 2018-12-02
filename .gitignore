@@ -3,3 +3,11 @@
 /BookLibrary/packages
 /BookLibrary/BookLibrary/obj
 /BookLibrary/BookLibrary/Business/*.bak
+/BookLibrary/BookLibrary/*.user
+/BookLibrary_SOAP/.vs
+/BookLibrary_SOAP/BookLibrary/bin
+/BookLibrary_SOAP/packages
+/BookLibrary_SOAP/BookLibrary/obj
+/BookLibrary_SOAP/BookLibrary.Soap/bin
+/BookLibrary_SOAP/BookLibrary.Soap/obj
+/BookLibrary_SOAP/BookLibrary.Soap/*.user
