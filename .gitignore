@@ -11,3 +11,10 @@
 /BookLibrary_SOAP/BookLibrary.Soap/bin
 /BookLibrary_SOAP/BookLibrary.Soap/obj
 /BookLibrary_SOAP/BookLibrary.Soap/*.user
+/BookLibrary_RPC/.vs
+/BookLibrary_RPC/BookLibrary/bin
+/BookLibrary_RPC/packages
+/BookLibrary_RPC/BookLibrary/obj
+/BookLibrary_RPC/BookLibrary.Rpc/bin
+/BookLibrary_RPC/BookLibrary.Rpc/obj
+/BookLibrary_RPC/BookLibrary.Rpc/*.user
