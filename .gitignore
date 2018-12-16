@@ -18,3 +18,10 @@
 /BookLibrary_RPC/BookLibrary.Rpc/bin
 /BookLibrary_RPC/BookLibrary.Rpc/obj
 /BookLibrary_RPC/BookLibrary.Rpc/*.user
+/BookLibrary_REST/.vs
+/BookLibrary_REST/BookLibrary/bin
+/BookLibrary_REST/packages
+/BookLibrary_REST/BookLibrary/obj
+/BookLibrary_REST/BookLibrary.Rest/bin
+/BookLibrary_REST/BookLibrary.Rest/obj
+/BookLibrary_REST/BookLibrary.Rest/*.user
