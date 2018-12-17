@@ -44,6 +44,17 @@ namespace BookLibrary.Business
 
             return result;
         }
+        public List<Book> GetByAuthorOrTitle(string author, string title)
+        {
+            List<Book> result = new List<Book>();
+
+            result = Context.Books
+                .Where(book => string.IsNullOrEmpty(author) || book.Author.Contains(author))
+                .Where(book => string.IsNullOrEmpty(title) || book.Title.Contains(title))
+                .ToList();
+
+            return result;
+        }
 
         public Book GetBookByID(int ID)
         {

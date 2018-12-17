@@ -33,6 +33,8 @@ namespace BookLibrary.Business
         {
             if (reader == null) throw new ArgumentNullException("reader");
 
+            reader.CreatedDate = DateTime.Now;
+
             Context.Readers.Add(reader);
             Context.SaveChanges();
         }

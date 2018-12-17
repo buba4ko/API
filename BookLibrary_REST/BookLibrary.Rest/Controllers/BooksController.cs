@@ -14,6 +14,7 @@ namespace BookLibrary.Rest.Controllers
     public class BooksController : ApiController
     {
         [HttpGet]
+        [Route]
         public List<BookModel> Get()
         {
             BookService bookService = new BookService();
@@ -56,7 +57,24 @@ namespace BookLibrary.Rest.Controllers
             return Ok(apiBooks);
         }
 
+        [HttpGet]
+        [Route("search")]
+        public IHttpActionResult GetBooksByAuthorOrTitle(string author=null, string title=null)
+        {
+            // now author and title are optional that's why they are GET query parameters, not a route parameters
+
+            BookService bookService = new BookService();
+            List<Book> books = bookService.GetByAuthorOrTitle(author, title);
+
+            List<BookModel> apiBooks = books
+                .Select(b => new BookModel(b))
+                .ToList();
+
+            return Ok(apiBooks);
+        }
+
         [HttpPut]
+        [Route]
         public IHttpActionResult Put(BookModel book)
         {
             try
@@ -78,6 +96,7 @@ namespace BookLibrary.Rest.Controllers
         }
 
         [HttpPost]
+        [Route]
         public IHttpActionResult Post(BookModel book)
         {
             try
@@ -94,7 +113,8 @@ namespace BookLibrary.Rest.Controllers
                 bookService.AddBook(dbBook);
 
                 // return the newly created Book
-                return Ok(dbBook);
+                BookModel newBook = new BookModel(dbBook);
+                return Ok(newBook);
             }
             catch (Exception ex)
             {
@@ -103,6 +123,7 @@ namespace BookLibrary.Rest.Controllers
         }
 
         [HttpDelete]
+        [Route]
         public IHttpActionResult Delete(int bookID)
         {
             try
@@ -134,7 +155,6 @@ namespace BookLibrary.Rest.Controllers
             var allBooks = bookService.GetNotReturnedBooks()
                 .Select(c => new BookModel(c))
                 .ToList();
-
             return Ok(allBooks);
         }
 
