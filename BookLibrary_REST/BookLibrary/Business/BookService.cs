@@ -43,6 +43,7 @@ namespace BookLibrary.Business
                 .ToList();
 
             return result;
+
         }
         public List<Book> GetByAuthorOrTitle(string author, string title)
         {
@@ -113,6 +114,8 @@ namespace BookLibrary.Business
             .ToList();
             return result;
         }
+
+
         #endregion
     }
 }

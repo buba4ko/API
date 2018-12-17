@@ -10,10 +10,14 @@ using System.Web.Http;
 
 namespace BookLibrary.Rest.Controllers
 {
+    /// <summary>
+    /// Controller for borrowed books by a user
+    /// </summary>
     [RoutePrefix("api/reader/{readerID}/borrowed-books")]
     public class BorrowedBooksController : ApiController
     {
         [HttpGet]
+        [Route]
         public IHttpActionResult Get(int readerID)
         {
             BookService bookService = new BookService();
