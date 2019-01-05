@@ -109,7 +109,7 @@ namespace BookLibrary.Business
         public List<Book> GetBorrowedBooksByReader(int readerID)
         {
             List<Book> result = Context.BorrowBooks
-            .Where(bb => bb.ReaderID == readerID)
+            .Where(bb => bb.ReaderID == readerID && bb.ReturnedDate == null)
             .Select(bb => bb.Book)
             .ToList();
             return result;
