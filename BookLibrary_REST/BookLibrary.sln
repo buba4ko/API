@@ -7,6 +7,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibrary", "BookLibrary\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibrary.Rest", "BookLibrary.Rest\BookLibrary.Rest.csproj", "{FACDD38C-2DF5-4A65-8C5A-9104C2E6AA8C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{0BD23B32-5055-4D6F-BD80-F18E5848F040}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ApiClients\ConsoleApp\ConsoleApp.csproj", "{003D5372-8051-4359-ACF1-0AB35883229B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApp", "WebApp", "{60EA308D-B198-4DDE-BD59-5E3918544236}"
+	ProjectSection(SolutionItems) = preProject
+		ApiClients\WebApp\books.html = ApiClients\WebApp\books.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{3E1AEDA3-148B-4201-AE3A-09E682199131}"
+	ProjectSection(SolutionItems) = preProject
+		ApiClients\WebApp\js\readers.js = ApiClients\WebApp\js\readers.js
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +35,18 @@ Global
 		{FACDD38C-2DF5-4A65-8C5A-9104C2E6AA8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FACDD38C-2DF5-4A65-8C5A-9104C2E6AA8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FACDD38C-2DF5-4A65-8C5A-9104C2E6AA8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{003D5372-8051-4359-ACF1-0AB35883229B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{003D5372-8051-4359-ACF1-0AB35883229B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{003D5372-8051-4359-ACF1-0AB35883229B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{003D5372-8051-4359-ACF1-0AB35883229B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{003D5372-8051-4359-ACF1-0AB35883229B} = {0BD23B32-5055-4D6F-BD80-F18E5848F040}
+		{60EA308D-B198-4DDE-BD59-5E3918544236} = {0BD23B32-5055-4D6F-BD80-F18E5848F040}
+		{3E1AEDA3-148B-4201-AE3A-09E682199131} = {60EA308D-B198-4DDE-BD59-5E3918544236}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3D01727C-057C-475C-9DBE-6D797066B9DF}

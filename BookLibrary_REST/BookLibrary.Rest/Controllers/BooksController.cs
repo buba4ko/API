@@ -13,6 +13,10 @@ namespace BookLibrary.Rest.Controllers
     [RoutePrefix("api/books")]
     public class BooksController : ApiController
     {
+        /// <summary>
+        /// Gets all books in the library
+        /// </summary>
+        /// <returns>A List<BookModel> with all books</returns>
         [HttpGet]
         [Route]
         public List<BookModel> Get()
@@ -24,9 +28,14 @@ namespace BookLibrary.Rest.Controllers
             return allBooks;
         }
 
+        /// <summary>
+        /// Get info for a single book by bookID
+        /// </summary>
+        /// <param name="bookID">The bookID in the database</param>
+        /// <returns>The found book</returns>
         [HttpGet]
         [Route("{bookID:int}")]
-        public IHttpActionResult Get(int? bookID)
+        public IHttpActionResult GetByID(int? bookID)
         {
             if (bookID == null)
                 return BadRequest("the parameter bookID is empty");
@@ -40,6 +49,11 @@ namespace BookLibrary.Rest.Controllers
             return Ok(apiBook);
         }
 
+        /// <summary>
+        /// Finds all books by a given author
+        /// </summary>
+        /// <param name="name">the author name</param>
+        /// <returns>A list with all found books. If no books are found - return empty string</returns>
         [HttpGet]
         [Route("author-name/{name}")]
         public IHttpActionResult GetBooksByAuthor(string name)
@@ -57,6 +71,12 @@ namespace BookLibrary.Rest.Controllers
             return Ok(apiBooks);
         }
 
+        /// <summary>
+        /// Finds all books by a given author or title
+        /// </summary>
+        /// <param name="author">the author name. optional parameter.</param>
+        /// <param name="title">text in the book title. optional parameter.</param>
+        /// <returns>A list with all found books. If no books are found - return empty string</returns>
         [HttpGet]
         [Route("search")]
         public IHttpActionResult GetBooksByAuthorOrTitle(string author=null, string title=null)
@@ -123,7 +143,7 @@ namespace BookLibrary.Rest.Controllers
         }
 
         [HttpDelete]
-        [Route]
+        [Route("{bookID:int}")]
         public IHttpActionResult Delete(int bookID)
         {
             try

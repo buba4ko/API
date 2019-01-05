@@ -85,7 +85,7 @@ namespace ReaderLibrary.Rest.Controllers
         }
 
         [HttpDelete]
-        [Route]
+        [Route("{readerID:int}")]
         public IHttpActionResult Delete(int readerID)
         {
             try
