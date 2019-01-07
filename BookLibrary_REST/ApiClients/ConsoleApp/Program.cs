@@ -19,6 +19,7 @@ namespace ConsoleApp
             Console.WriteLine();
             Console.WriteLine("'6' - Get all reader");
             Console.WriteLine("'7' - Get reader by ID");
+            Console.WriteLine("'8' - Create Reader");
             Console.WriteLine();
             Console.WriteLine("'9' - See borrowed books by reader");
             Console.WriteLine("10' - Borrow book");
@@ -31,10 +32,6 @@ namespace ConsoleApp
 
         static void Main(string[] args)
         {
-
-         //   Console.ReadKey();
-
-
             PrintTopInfo();
 
             while (true)
@@ -87,6 +84,15 @@ namespace ConsoleApp
                             Console.Write("Enter readerID: ");
                             bookID = ReadIntegerFromConsole();
                             client.GetReaderByID(bookID);
+                            break;
+                        case "8":
+                            Console.Write("First Name: ");
+                            string firstName = Console.ReadLine();
+                            Console.Write("Last Name: ");
+                            string lastName = Console.ReadLine();
+                            Console.Write("Phone: ");
+                            string phoneNumber = Console.ReadLine();
+                            client.Createreader(firstName, lastName, phoneNumber);
                             break;
                         case "9":
                             Console.Write("Enter readerID: ");
