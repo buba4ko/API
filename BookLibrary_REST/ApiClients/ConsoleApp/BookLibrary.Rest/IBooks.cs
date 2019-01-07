@@ -17,6 +17,9 @@ namespace ConsoleApp
     /// </summary>
     public partial interface IBooks
     {
+        /// <summary>
+        /// Gets all books in the library
+        /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -24,7 +27,11 @@ namespace ConsoleApp
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<IList<BookModel>>> GetWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Updates the information for a book in the library
+        /// </summary>
         /// <param name='book'>
+        /// The new Book object
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -33,7 +40,11 @@ namespace ConsoleApp
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<object>> PutWithHttpMessagesAsync(BookModel book, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Creates a new book
+        /// </summary>
         /// <param name='book'>
+        /// the book object
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -55,7 +66,11 @@ namespace ConsoleApp
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<object>> GetByIDWithHttpMessagesAsync(int bookID, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deletes a book from the library
+        /// </summary>
         /// <param name='bookID'>
+        /// the book ID
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -93,6 +108,10 @@ namespace ConsoleApp
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<object>> GetBooksByAuthorOrTitleWithHttpMessagesAsync(string author = default(string), string title = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Returns all books which are not returned, no matter which reader
+        /// took them
+        /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>

@@ -17,20 +17,28 @@ namespace ConsoleApp
     /// </summary>
     public static partial class BorrowedBooksExtensions
     {
+            /// <summary>
+            /// Get books borrowed by a reader
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='readerID'>
+            /// The reader ID
             /// </param>
             public static object Get(this IBorrowedBooks operations, int readerID)
             {
                 return Task.Factory.StartNew(s => ((IBorrowedBooks)s).GetAsync(readerID), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Get books borrowed by a reader
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='readerID'>
+            /// The reader ID
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -43,24 +51,34 @@ namespace ConsoleApp
                 }
             }
 
+            /// <summary>
+            /// Borrows a book by a reader
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='readerID'>
+            /// the reader ID
             /// </param>
             /// <param name='bookID'>
+            /// the book ID
             /// </param>
             public static object Post(this IBorrowedBooks operations, int readerID, int bookID)
             {
                 return Task.Factory.StartNew(s => ((IBorrowedBooks)s).PostAsync(readerID, bookID), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Borrows a book by a reader
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='readerID'>
+            /// the reader ID
             /// </param>
             /// <param name='bookID'>
+            /// the book ID
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -73,24 +91,34 @@ namespace ConsoleApp
                 }
             }
 
+            /// <summary>
+            /// Returns a book by a reader
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='readerID'>
+            /// the reader ID
             /// </param>
             /// <param name='bookID'>
+            /// the book ID
             /// </param>
             public static object Delete(this IBorrowedBooks operations, int readerID, int bookID)
             {
                 return Task.Factory.StartNew(s => ((IBorrowedBooks)s).DeleteAsync(readerID, bookID), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Returns a book by a reader
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='readerID'>
+            /// the reader ID
             /// </param>
             /// <param name='bookID'>
+            /// the book ID
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

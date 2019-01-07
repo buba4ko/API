@@ -17,6 +17,9 @@ namespace ConsoleApp
     /// </summary>
     public static partial class ReadersExtensions
     {
+            /// <summary>
+            /// Get all Readers in the library
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -25,6 +28,9 @@ namespace ConsoleApp
                 return Task.Factory.StartNew(s => ((IReaders)s).GetAllAsync(), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Get all Readers in the library
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -39,20 +45,28 @@ namespace ConsoleApp
                 }
             }
 
+            /// <summary>
+            /// Updates information for an existing reader
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='reader'>
+            /// information for the new Reader. The ID should not be set.
             /// </param>
             public static object Put(this IReaders operations, ReaderModel reader)
             {
                 return Task.Factory.StartNew(s => ((IReaders)s).PutAsync(reader), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Updates information for an existing reader
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='reader'>
+            /// information for the new Reader. The ID should not be set.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -65,20 +79,28 @@ namespace ConsoleApp
                 }
             }
 
+            /// <summary>
+            /// Create a new reader
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='reader'>
+            /// information for the new Reader. The ID should not be set.
             /// </param>
             public static object Post(this IReaders operations, ReaderModel reader)
             {
                 return Task.Factory.StartNew(s => ((IReaders)s).PostAsync(reader), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Create a new reader
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='reader'>
+            /// information for the new Reader. The ID should not be set.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -91,20 +113,28 @@ namespace ConsoleApp
                 }
             }
 
+            /// <summary>
+            /// Get information for one reader
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='readerID'>
+            /// The readerID in teh DB
             /// </param>
             public static object GetByID(this IReaders operations, int readerID)
             {
                 return Task.Factory.StartNew(s => ((IReaders)s).GetByIDAsync(readerID), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Get information for one reader
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='readerID'>
+            /// The readerID in teh DB
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -117,20 +147,28 @@ namespace ConsoleApp
                 }
             }
 
+            /// <summary>
+            /// Deletes reader from the library
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='readerID'>
+            /// The ID of the reader
             /// </param>
             public static object Delete(this IReaders operations, int readerID)
             {
                 return Task.Factory.StartNew(s => ((IReaders)s).DeleteAsync(readerID), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Deletes reader from the library
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='readerID'>
+            /// The ID of the reader
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

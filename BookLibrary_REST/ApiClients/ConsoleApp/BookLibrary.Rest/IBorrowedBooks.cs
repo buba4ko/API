@@ -17,7 +17,11 @@ namespace ConsoleApp
     /// </summary>
     public partial interface IBorrowedBooks
     {
+        /// <summary>
+        /// Get books borrowed by a reader
+        /// </summary>
         /// <param name='readerID'>
+        /// The reader ID
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -26,9 +30,14 @@ namespace ConsoleApp
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<object>> GetWithHttpMessagesAsync(int readerID, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Borrows a book by a reader
+        /// </summary>
         /// <param name='readerID'>
+        /// the reader ID
         /// </param>
         /// <param name='bookID'>
+        /// the book ID
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -37,9 +46,14 @@ namespace ConsoleApp
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<object>> PostWithHttpMessagesAsync(int readerID, int bookID, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Returns a book by a reader
+        /// </summary>
         /// <param name='readerID'>
+        /// the reader ID
         /// </param>
         /// <param name='bookID'>
+        /// the book ID
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

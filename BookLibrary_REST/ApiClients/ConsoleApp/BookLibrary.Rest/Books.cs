@@ -44,6 +44,9 @@ namespace ConsoleApp
         /// </summary>
         public BookLibraryRest Client { get; private set; }
 
+        /// <summary>
+        /// Gets all books in the library
+        /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -154,7 +157,11 @@ namespace ConsoleApp
             return _result;
         }
 
+        /// <summary>
+        /// Updates the information for a book in the library
+        /// </summary>
         /// <param name='book'>
+        /// The new Book object
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -231,7 +238,7 @@ namespace ConsoleApp
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 204 && (int)_statusCode != 404 && (int)_statusCode != 400)
             {
                 var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -253,7 +260,7 @@ namespace ConsoleApp
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
-            if ((int)_statusCode == 200)
+            if ((int)_statusCode == 204)
             {
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
@@ -277,7 +284,11 @@ namespace ConsoleApp
             return _result;
         }
 
+        /// <summary>
+        /// Creates a new book
+        /// </summary>
         /// <param name='book'>
+        /// the book object
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -354,7 +365,7 @@ namespace ConsoleApp
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 204 && (int)_statusCode != 400)
             {
                 var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -376,7 +387,7 @@ namespace ConsoleApp
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
-            if ((int)_statusCode == 200)
+            if ((int)_statusCode == 204)
             {
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
@@ -472,7 +483,7 @@ namespace ConsoleApp
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 400)
             {
                 var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -518,7 +529,11 @@ namespace ConsoleApp
             return _result;
         }
 
+        /// <summary>
+        /// Deletes a book from the library
+        /// </summary>
         /// <param name='bookID'>
+        /// the book ID
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -586,7 +601,7 @@ namespace ConsoleApp
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 204 && (int)_statusCode != 404 && (int)_statusCode != 400)
             {
                 var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -608,7 +623,7 @@ namespace ConsoleApp
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
-            if ((int)_statusCode == 200)
+            if ((int)_statusCode == 204)
             {
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
@@ -708,7 +723,7 @@ namespace ConsoleApp
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 400)
             {
                 var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -888,6 +903,9 @@ namespace ConsoleApp
             return _result;
         }
 
+        /// <summary>
+        /// Returns all books which are not returned, no matter which reader took them
+        /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>

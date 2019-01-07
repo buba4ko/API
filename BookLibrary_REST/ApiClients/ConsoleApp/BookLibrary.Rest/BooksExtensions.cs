@@ -17,6 +17,9 @@ namespace ConsoleApp
     /// </summary>
     public static partial class BooksExtensions
     {
+            /// <summary>
+            /// Gets all books in the library
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -25,6 +28,9 @@ namespace ConsoleApp
                 return Task.Factory.StartNew(s => ((IBooks)s).GetAsync(), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Gets all books in the library
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -39,20 +45,28 @@ namespace ConsoleApp
                 }
             }
 
+            /// <summary>
+            /// Updates the information for a book in the library
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='book'>
+            /// The new Book object
             /// </param>
             public static object Put(this IBooks operations, BookModel book)
             {
                 return Task.Factory.StartNew(s => ((IBooks)s).PutAsync(book), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Updates the information for a book in the library
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='book'>
+            /// The new Book object
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -65,20 +79,28 @@ namespace ConsoleApp
                 }
             }
 
+            /// <summary>
+            /// Creates a new book
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='book'>
+            /// the book object
             /// </param>
             public static object Post(this IBooks operations, BookModel book)
             {
                 return Task.Factory.StartNew(s => ((IBooks)s).PostAsync(book), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Creates a new book
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='book'>
+            /// the book object
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -125,20 +147,28 @@ namespace ConsoleApp
                 }
             }
 
+            /// <summary>
+            /// Deletes a book from the library
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='bookID'>
+            /// the book ID
             /// </param>
             public static object Delete(this IBooks operations, int bookID)
             {
                 return Task.Factory.StartNew(s => ((IBooks)s).DeleteAsync(bookID), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Deletes a book from the library
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='bookID'>
+            /// the book ID
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -225,6 +255,9 @@ namespace ConsoleApp
                 }
             }
 
+            /// <summary>
+            /// Returns all books which are not returned, no matter which reader took them
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -233,6 +266,9 @@ namespace ConsoleApp
                 return Task.Factory.StartNew(s => ((IBooks)s).GetNotReturnedBooksAsync(), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Returns all books which are not returned, no matter which reader took them
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

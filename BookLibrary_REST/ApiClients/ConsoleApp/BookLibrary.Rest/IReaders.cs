@@ -17,6 +17,9 @@ namespace ConsoleApp
     /// </summary>
     public partial interface IReaders
     {
+        /// <summary>
+        /// Get all Readers in the library
+        /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -24,7 +27,11 @@ namespace ConsoleApp
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<IList<ReaderModel>>> GetAllWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Updates information for an existing reader
+        /// </summary>
         /// <param name='reader'>
+        /// information for the new Reader. The ID should not be set.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -33,7 +40,11 @@ namespace ConsoleApp
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<object>> PutWithHttpMessagesAsync(ReaderModel reader, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Create a new reader
+        /// </summary>
         /// <param name='reader'>
+        /// information for the new Reader. The ID should not be set.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -42,7 +53,11 @@ namespace ConsoleApp
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<object>> PostWithHttpMessagesAsync(ReaderModel reader, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Get information for one reader
+        /// </summary>
         /// <param name='readerID'>
+        /// The readerID in teh DB
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -51,7 +66,11 @@ namespace ConsoleApp
         /// The cancellation token.
         /// </param>
         Task<HttpOperationResponse<object>> GetByIDWithHttpMessagesAsync(int readerID, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deletes reader from the library
+        /// </summary>
         /// <param name='readerID'>
+        /// The ID of the reader
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

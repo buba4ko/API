@@ -44,6 +44,9 @@ namespace ConsoleApp
         /// </summary>
         public BookLibraryRest Client { get; private set; }
 
+        /// <summary>
+        /// Get all Readers in the library
+        /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -154,7 +157,11 @@ namespace ConsoleApp
             return _result;
         }
 
+        /// <summary>
+        /// Updates information for an existing reader
+        /// </summary>
         /// <param name='reader'>
+        /// information for the new Reader. The ID should not be set.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -231,7 +238,7 @@ namespace ConsoleApp
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 204 && (int)_statusCode != 404 && (int)_statusCode != 400)
             {
                 var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -253,7 +260,7 @@ namespace ConsoleApp
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
-            if ((int)_statusCode == 200)
+            if ((int)_statusCode == 204)
             {
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
@@ -277,7 +284,11 @@ namespace ConsoleApp
             return _result;
         }
 
+        /// <summary>
+        /// Create a new reader
+        /// </summary>
         /// <param name='reader'>
+        /// information for the new Reader. The ID should not be set.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -354,7 +365,7 @@ namespace ConsoleApp
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 400)
             {
                 var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -400,7 +411,11 @@ namespace ConsoleApp
             return _result;
         }
 
+        /// <summary>
+        /// Get information for one reader
+        /// </summary>
         /// <param name='readerID'>
+        /// The readerID in teh DB
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -468,7 +483,7 @@ namespace ConsoleApp
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 400)
             {
                 var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -514,7 +529,11 @@ namespace ConsoleApp
             return _result;
         }
 
+        /// <summary>
+        /// Deletes reader from the library
+        /// </summary>
         /// <param name='readerID'>
+        /// The ID of the reader
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -582,7 +601,7 @@ namespace ConsoleApp
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 204 && (int)_statusCode != 404 && (int)_statusCode != 400)
             {
                 var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -604,7 +623,7 @@ namespace ConsoleApp
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
-            if ((int)_statusCode == 200)
+            if ((int)_statusCode == 204)
             {
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try

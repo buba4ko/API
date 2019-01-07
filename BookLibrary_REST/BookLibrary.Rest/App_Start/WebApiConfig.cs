@@ -13,6 +13,7 @@ namespace BookLibrary.Rest
             // Web API configuration and services
 
             // enable CORS
+            // install nuget package Microsoft.AspNet.WebApi.Cors
             var cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(cors);
 
