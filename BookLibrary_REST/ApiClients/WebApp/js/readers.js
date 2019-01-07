@@ -7,6 +7,8 @@ $(document).ready(function () {
 
     $(document).on("click", '#nav-readers-tab', getReaders);
     $(document).on("click", '.delete-reader', deleteReader);
+	$(document).on("click", '#btnSaveReader', createReader);
+
     
 });
 
@@ -59,8 +61,8 @@ function deleteReader() {
         type: 'DELETE',
         data: null,
         success: function (res) {
-            alert("Reader is deleted succssully");
             getReaders();
+            alert("Reader is deleted succssully");
         },
         error: function (res) {
             var errorMessage = res.responseText;
@@ -70,4 +72,45 @@ function deleteReader() {
             alert("Could not delete reader:\n" + errorMessage);
         }
     });
+}
+
+function createReader()
+{
+    var firstName = $("#readerFirstName").val();
+    var lastName = $("#readerLastName").val();	
+	var phone = $("#readerPhone").val();
+    var reader = {  
+					firstName:firstName,
+					lastName : lastName,
+					PhoneNumber : phone
+				};
+				var x = JSON.stringify(reader);
+	
+    $.ajax({
+        url: serverUri + "api/readers",
+		contentType: "application/json",   
+        type: 'POST',
+        data: JSON.stringify(reader),
+        success: function (res) {
+			$("#createReaderModal .close").click();
+			clearCreateReaderInputs();
+            getReaders();
+            alert("Reader is created succssully");
+        },
+        error: function (res) {
+            var errorMessage = res.responseText;
+            if (res.responseJSON  && res.responseJSON.Message) {
+                errorMessage = res.responseJSON.Message;
+            }
+            alert("Could not create reader:\n" + errorMessage);
+        }
+    });
+}
+
+// when we 
+function clearCreateReaderInputs()
+{
+    $("#readerFirstName").val("");
+    $("#readerLastName").val("");	
+	$("#readerPhone").val("");	
 }
