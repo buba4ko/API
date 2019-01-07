@@ -16,6 +16,13 @@ namespace BookLibrary.Rest.Controllers
     [RoutePrefix("api/reader/{readerID}/borrowed-books")]
     public class BorrowedBooksController : ApiController
     {
+        /// <summary>
+        /// Get books borrowed by a reader
+        /// </summary>
+        /// <param name="readerID">The reader ID</param>
+        /// <returns>A List of Books</returns>
+        /// <response code="200">OK</response>
+        /// <response code="400">BadRequest</response>
         [HttpGet]
         [Route]
         public IHttpActionResult Get(int readerID)
@@ -35,6 +42,14 @@ namespace BookLibrary.Rest.Controllers
             return Ok(allBooks);
         }
 
+        /// <summary>
+        /// Borrows a book by a reader
+        /// </summary>
+        /// <param name="readerID">the reader ID</param>
+        /// <param name="bookID">the book ID</param>
+        /// <returns>OK status or error status</returns>
+        /// <response code="200">OK</response>
+        /// <response code="400">BadRequest</response>
         [HttpPost]
         [Route("{bookID}")]
         public IHttpActionResult Post(int readerID, int bookID)
@@ -57,6 +72,14 @@ namespace BookLibrary.Rest.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Returns a book by a reader
+        /// </summary>
+        /// <param name="readerID">the reader ID</param>
+        /// <param name="bookID">the book ID</param>
+        /// <returns>OK status or error status</returns>
+        /// <response code="200">OK</response>
+        /// <response code="400">BadRequest</response>
         [HttpDelete]
         [Route("{bookID}")]
         public IHttpActionResult Delete(int readerID, int bookID)

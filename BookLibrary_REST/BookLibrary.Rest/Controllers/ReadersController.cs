@@ -10,9 +10,17 @@ using System.Web.Http;
 
 namespace ReaderLibrary.Rest.Controllers
 {
+    /// <summary>
+    /// Controller for the Reader functionality
+    /// </summary>
     [RoutePrefix("api/readers")]
     public class ReadersController : ApiController
     {
+        /// <summary>
+        /// Get all Readers in the library
+        /// </summary>
+        /// <returns>an IList with all readers</returns>
+        /// <response code="200">OK</response>
         [HttpGet]
         [Route] 
         public IList<ReaderModel> GetAll()
@@ -24,6 +32,13 @@ namespace ReaderLibrary.Rest.Controllers
             return allReaders;
         }
 
+        /// <summary>
+        /// Get information for one reader
+        /// </summary>
+        /// <param name="readerID">The readerID in teh DB</param>
+        /// <returns>information for one reader</returns>
+        /// <response code="200">OK</response>
+        /// <response code="400">BadRequest</response>
         [HttpGet]
         [Route("{readerID:int}")]
         public IHttpActionResult GetByID(int? readerID)
@@ -40,6 +55,14 @@ namespace ReaderLibrary.Rest.Controllers
             return Ok(apiReader);
         }
 
+        /// <summary>
+        /// Updates information for an existing reader
+        /// </summary>
+        /// <param name="reader">information for the new Reader. The ID should not be set.</param>
+        /// <returns>Code 204 if success or error message</returns>
+        /// <response code="204">NoContent</response>
+        /// <response code="404">NotFound</response>
+        /// <response code="400">BadRequest</response>
         [HttpPut]
         [Route]
         public IHttpActionResult Put(ReaderModel reader)
@@ -62,6 +85,13 @@ namespace ReaderLibrary.Rest.Controllers
             }
         }
 
+        /// <summary>
+        /// Create a new reader
+        /// </summary>
+        /// <param name="reader">information for the new Reader. The ID should not be set.</param>
+        /// <returns>the newly created Reader object</returns>
+        /// <response code="200">OK</response>
+        /// <response code="400">BadRequest</response>
         [HttpPost]
         [Route]
         public IHttpActionResult Post(ReaderModel reader)
@@ -84,6 +114,15 @@ namespace ReaderLibrary.Rest.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Deletes reader from the library
+        /// </summary>
+        /// <param name="readerID">The ID of the reader</param>
+        /// <returns>Code 204 if success or error message</returns>
+        /// <response code="204">NoContent</response>
+        /// <response code="404">NotFound</response>
+        /// <response code="400">BadRequest</response>
         [HttpDelete]
         [Route("{readerID:int}")]
         public IHttpActionResult Delete(int readerID)

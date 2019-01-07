@@ -10,13 +10,17 @@ using System.Web.Http;
 
 namespace BookLibrary.Rest.Controllers
 {
+    /// <summary>
+    /// Controller for the Book functionality
+    /// </summary>
     [RoutePrefix("api/books")]
     public class BooksController : ApiController
     {
         /// <summary>
         /// Gets all books in the library
         /// </summary>
-        /// <returns>A List<BookModel> with all books</returns>
+        /// <returns>A List with all books</returns>
+        /// <response code="200">OK</response>
         [HttpGet]
         [Route]
         public List<BookModel> Get()
@@ -33,6 +37,8 @@ namespace BookLibrary.Rest.Controllers
         /// </summary>
         /// <param name="bookID">The bookID in the database</param>
         /// <returns>The found book</returns>
+        /// <response code="200">OK</response>
+        /// <response code="400">BadRequest</response>
         [HttpGet]
         [Route("{bookID:int}")]
         public IHttpActionResult GetByID(int? bookID)
@@ -54,6 +60,8 @@ namespace BookLibrary.Rest.Controllers
         /// </summary>
         /// <param name="name">the author name</param>
         /// <returns>A list with all found books. If no books are found - return empty string</returns>
+        /// <response code="200">OK</response>
+        /// <response code="400">BadRequest</response>
         [HttpGet]
         [Route("author-name/{name}")]
         public IHttpActionResult GetBooksByAuthor(string name)
@@ -77,6 +85,7 @@ namespace BookLibrary.Rest.Controllers
         /// <param name="author">the author name. optional parameter.</param>
         /// <param name="title">text in the book title. optional parameter.</param>
         /// <returns>A list with all found books. If no books are found - return empty string</returns>
+        /// <response code="200">OK</response>
         [HttpGet]
         [Route("search")]
         public IHttpActionResult GetBooksByAuthorOrTitle(string author=null, string title=null)
@@ -93,6 +102,14 @@ namespace BookLibrary.Rest.Controllers
             return Ok(apiBooks);
         }
 
+        /// <summary>
+        /// Updates the information for a book in the library
+        /// </summary>
+        /// <param name="book">The new Book object</param>
+        /// <returns>status code 204 or error status code</returns>
+        /// <response code="204">NoContent</response>
+        /// <response code="404">NotFound</response>
+        /// <response code="400">BadRequest</response>
         [HttpPut]
         [Route]
         public IHttpActionResult Put(BookModel book)
@@ -115,6 +132,13 @@ namespace BookLibrary.Rest.Controllers
             }
         }
 
+        /// <summary>
+        /// Creates a new book
+        /// </summary>
+        /// <param name="book">the book object</param>
+        /// <returns>The newly created book</returns>
+        /// <response code="204">NoContent</response>
+        /// <response code="400">BadRequest</response>
         [HttpPost]
         [Route]
         public IHttpActionResult Post(BookModel book)
@@ -142,6 +166,14 @@ namespace BookLibrary.Rest.Controllers
             }
         }
 
+        /// <summary>
+        /// Deletes a book from the library
+        /// </summary>
+        /// <param name="bookID">the book ID</param>
+        /// <returns>status code 204 or error status code</returns>
+        /// <response code="204">NoContent</response>
+        /// <response code="404">NotFound</response>
+        /// <response code="400">BadRequest</response>
         [HttpDelete]
         [Route("{bookID:int}")]
         public IHttpActionResult Delete(int bookID)
@@ -165,6 +197,11 @@ namespace BookLibrary.Rest.Controllers
             }
         }
 
+        /// <summary>
+        /// Returns all books which are not returned, no matter which reader took them
+        /// </summary>
+        /// <returns>a List with Books</returns>
+        /// <response code="200">OK</response>
         [HttpGet]
         [Route("not-returned")]
         public IHttpActionResult GetNotReturnedBooks()
