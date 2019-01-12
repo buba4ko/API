@@ -18,6 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApp", "WebApp", "{60EA30
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{3E1AEDA3-148B-4201-AE3A-09E682199131}"
 	ProjectSection(SolutionItems) = preProject
+		books.js = books.js
 		ApiClients\WebApp\js\readers.js = ApiClients\WebApp\js\readers.js
 	EndProjectSection
 EndProject
