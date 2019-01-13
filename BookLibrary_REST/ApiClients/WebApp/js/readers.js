@@ -121,7 +121,7 @@ function clearCreateReaderInputs()
 
 function populateDropdown() {
 
-    var dropdown = $("#reders-select");
+    var dropdown = $("#readers-select");
 
     dropdown.empty();
 

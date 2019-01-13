@@ -43,7 +43,7 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Login</label>
                     </div>
-                    <select class="custom-select" id="reders-select">
+                    <select class="custom-select" id="readers-select">
                         <option selected>Choose...</option>
                     </select>
                 </div>
@@ -66,7 +66,8 @@
                             <p class="card-text">Genre: $$Genre$$</p>
                             <p class="card-text">Description $$Description$$</p>
                             <p class="card-text">Quantity: $$Quantity$$</p>
-                            <button class="btn btn-primary">Borrow</button>
+                            <button class="btn btn-primary borrow-book" data-book-id="$$BorrowID$$">Borrow</button>
+                            <button class="btn btn-primary return-book" data-book-id="$$ReturnID$$">Return</button>
                             <button class="btn btn-danger delete-book" data-book-id="$$DeleteID$$">Delete</button>
                         </div>
                     </div>

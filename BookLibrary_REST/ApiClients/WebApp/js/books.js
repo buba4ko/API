@@ -6,6 +6,8 @@ $(document).ready(function () {
     $(document).on("click", '#btnSaveBook', createBook);
     $(document).on("click", '.delete-book', deleteBook);
     $(document).on("click", '#button-search', findBookByTitle);
+    $(document).on("click", '.borrow-book', borrowBook);
+    $(document).on("click", '.return-book', returnBook);
 });
 
 function getBooks() {
@@ -32,6 +34,8 @@ function getBooks() {
                 str = str.replace("$$Description$$", model.Description);
                 str = str.replace("$$Quantity$$", model.Quantity);
                 str = str.replace("$$DeleteID$$", model.ID);
+                str = str.replace("$$BorrowID$$", model.ID);
+                str = str.replace("$$ReturnID$$", model.ID);
 
                 temp[0].innerHTML = str;
 
@@ -154,9 +158,107 @@ function displayBooks(books) {
             str = str.replace("$$Description$$", model.Description);
             str = str.replace("$$Quantity$$", model.Quantity);
             str = str.replace("$$DeleteID$$", model.ID);
+            str = str.replace("$$BorrowID$$", model.ID);
+            str = str.replace("$$ReturnID$$", model.ID);
 
             temp[0].innerHTML = str;
 
             temp.appendTo(bookTemplate.parent());
         }
+}
+
+function borrowBook() {
+
+    var readerID = $("#readers-select").val();
+
+    var bookID = $(this).attr("data-book-id");
+    
+    $.ajax({
+        url: serverUri + "api/reader/" + readerID + "/borrowed-books",
+        type: 'GET',
+        data: null,
+        success: function (result) {
+            var isAlreadyBorrowed = false;
+
+            for (var i = 0; i < result.length; i++) {
+                if (result[i].ID == bookID) isAlreadyBorrowed = true;
+            }
+
+            if (isAlreadyBorrowed) alert("You can't borrow the same book twice!");
+            else {
+
+                $.ajax({
+                    url: serverUri + "api/reader/" + readerID + "/borrowed-books/" + bookID,
+                    type: 'POST',
+                    data: null,
+                    success: function (res) {
+                        getBooks();
+                        alert("The book is successfully borrowed.");
+                    },
+                    error: function (res) {
+                        var errorMessage = res.responseText;
+                        if (res.responseJSON && res.responseJSON.Message) {
+                            errorMessage = res.responseJSON.Message;
+                        }
+                        alert("Could not borrow the book:\n" + errorMessage);
+                    }
+                });
+            }
+        },
+        error: function (res) {
+            var errorMessage = res.responseText;
+            if (res.responseJSON && res.responseJSON.Message) {
+                errorMessage = res.responseJSON.Message;
+            }
+            alert("Could not borrow the book:\n" + errorMessage);
+        }
+    });
+}
+
+function returnBook() {
+
+    var readerID = $("#readers-select").val();
+
+    var bookID = $(this).attr("data-book-id");
+
+    $.ajax({
+        url: serverUri + "api/reader/" + readerID + "/borrowed-books",
+        type: 'GET',
+        data: null,
+        success: function (result) {
+            var isAlreadyBorrowed = false;
+
+            for (var i = 0; i < result.length; i++) {
+                if (result[i].ID == bookID) isAlreadyBorrowed = true;
+            }
+
+            if (!isAlreadyBorrowed) alert("You should first borrow the book to be able to return it!");
+            else {
+
+                $.ajax({
+                    url: serverUri + "api/reader/" + readerID + "/borrowed-books/" + bookID,
+                    type: 'DELETE',
+                    data: null,
+                    success: function (res) {
+                        getBooks();
+                        alert("The book is successfully returned.");
+                    },
+                    error: function (res) {
+                        var errorMessage = res.responseText;
+                        if (res.responseJSON && res.responseJSON.Message) {
+                            errorMessage = res.responseJSON.Message;
+                        }
+                        alert("Could not return the book:\n" + errorMessage);
+                    }
+                });
+            }
+        },
+        error: function (res) {
+            var errorMessage = res.responseText;
+            if (res.responseJSON && res.responseJSON.Message) {
+                errorMessage = res.responseJSON.Message;
+            }
+            alert("Could not return the book:\n" + errorMessage);
+        }
+    });
 }
