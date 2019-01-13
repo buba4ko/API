@@ -1,10 +1,10 @@
 var serverUri = "http://localhost:65040/";
 
 $(document).ready(function () {
-
+    getBooks();
     $(document).on("click", '#nav-books-tab', getBooks);
     $(document).on("click", '#btnSaveBook', createBook);
-
+    $(document).on("click", '.delete-book', deleteBook);
 });
 
 function getBooks() {
@@ -30,6 +30,7 @@ function getBooks() {
                 str = str.replace("$$Genre$$", model.Genre);
                 str = str.replace("$$Description$$", model.Description);
                 str = str.replace("$$Quantity$$", model.Quantity);
+                str = str.replace("$$DeleteID$$", model.ID);
 
                 temp[0].innerHTML = str;
 
@@ -48,14 +49,37 @@ function getBooks() {
 
 }
 
+function deleteBook() {
+    var bookID = $(this).attr("data-book-id");
+
+    $.ajax({
+        url: serverUri + "api/books/" + bookID,
+        type: 'DELETE',
+        data: null,
+        success: function (res) {
+            getBooks();
+            alert("Book is deleted succssully");
+        },
+        error: function (res) {
+            var errorMessage = res.responseText;
+            if (res.responseJSON && res.responseJSON.Message) {
+                errorMessage = res.responseJSON.Message;
+            }
+            alert("Could not delete book:\n" + errorMessage);
+        }
+    });
+}
+
 function createBook() {
     var bookName = $("#bookName").val();
+    var bookGenre = $("#bookGenre").val();
     var authorName = $("#authorName").val();
     var description = $("#bookDescription").val();
     var book = {
-        firstName: bookName,
-        lastName: authorName,
-        PhoneNumber: description
+        Title: bookName,
+        Genre: bookGenre,
+        Author: authorName,
+        Description: description
     };
     var x = JSON.stringify(book);
 
@@ -82,6 +106,7 @@ function createBook() {
 
 function clearCreateBookInputs() {
     $("#bookName").val("");
+    $("#bookGenre").val("");
     $("#authorName").val("");
     $("#bookDescription").val("");
 }

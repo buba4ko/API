@@ -65,11 +65,12 @@
                         <div class="card-body">
                             <h5 class="card-title">$$Title$$</h5>
                             <p class="card-text">ID: $$ID$$</p>
+                            <p class="card-text">Author: $$Author$$</p>
                             <p class="card-text">Genre: $$Genre$$</p>
                             <p class="card-text">Description $$Description$$</p>
                             <p class="card-text">Quantity: $$Quantity$$</p>
                             <button class="btn btn-primary">Borrow</button>
-                            <button class="btn btn-danger">Delete</button>
+                            <button class="btn btn-danger delete-book" data-book-id="$$DeleteID$$">Delete</button>
                         </div>
                     </div>
                 </div>
@@ -114,6 +115,10 @@
                             <div class="form-group">
                                 <label for="bookName">Book Name</label>
                                 <input type="text" class="form-control" id="bookName" placeholder="Book name">
+                            </div>
+                            <div class="form-group">
+                                <label for="bookGenre">Genre</label>
+                                <input type="text" class="form-control" id="bookGenre" placeholder="Genre">
                             </div>
                             <div class="form-group">
                                 <label for="authorName">Author Name</label>
