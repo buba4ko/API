@@ -45,8 +45,7 @@ function getBooks() {
                     errorMessage = res.responseJSON.Message;
                 }
                 alert("Error when getting all books:\n" + errorMessage);
-            })
-            ;
+            });
 
 }
 
@@ -158,8 +157,6 @@ function displayBooks(books) {
 
             temp[0].innerHTML = str;
 
-
             temp.appendTo(bookTemplate.parent());
         }
-
 }

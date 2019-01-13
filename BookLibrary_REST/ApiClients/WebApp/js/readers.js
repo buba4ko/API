@@ -5,6 +5,7 @@ var serverUri = "http://localhost:65040/";
 
 $(document).ready(function () {
 
+    populateDropdown();
     $(document).on("click", '#nav-readers-tab', getReaders);
     $(document).on("click", '.delete-reader', deleteReader);
 	$(document).on("click", '#btnSaveReader', createReader);
@@ -48,8 +49,7 @@ function getReaders() {
             errorMessage = res.responseJSON.Message;
         }
         alert("Error when getting all readers:\n" + errorMessage);
-    })
-    ;
+    });
 
 }
 
@@ -62,6 +62,8 @@ function deleteReader() {
         data: null,
         success: function (res) {
             getReaders();
+            //Change the values in the dropdown because of the change in the readers collection
+            populateDropdown();
             alert("Reader is deleted succssully");
         },
         error: function (res) {
@@ -95,6 +97,8 @@ function createReader()
 			$("#createReaderModal .close").click();
 			clearCreateReaderInputs();
             getReaders();
+            //Change the values in the dropdown because of the change in the readers collection
+            populateDropdown();
             alert("Reader is created succssully");
         },
         error: function (res) {
@@ -113,4 +117,31 @@ function clearCreateReaderInputs()
     $("#readerFirstName").val("");
     $("#readerLastName").val("");	
 	$("#readerPhone").val("");	
+}
+
+function populateDropdown() {
+
+    var dropdown = $("#reders-select");
+
+    dropdown.empty();
+
+    $.ajax({
+        url: serverUri + "api/readers",
+        contentType: "application/json",
+        type: 'GET',
+        data: null,
+        success: function (result) {
+            for (var i = 0; i < result.length; i++) {
+                dropdown.append('<option value="' + result[i].ID + '">' + result[i].ID + '</option>');
+            }
+        },
+        error: function (res) {
+            var errorMessage = res.responseText;
+            if (res.responseJSON && res.responseJSON.Message) {
+                errorMessage = res.responseJSON.Message;
+            }
+            alert("Could not populate readers dropdown:\n" + errorMessage);
+        }
+    });
+
 }
