@@ -5,6 +5,7 @@ $(document).ready(function () {
     $(document).on("click", '#nav-books-tab', getBooks);
     $(document).on("click", '#btnSaveBook', createBook);
     $(document).on("click", '.delete-book', deleteBook);
+    $(document).on("click", '#button-search', findBookByTitle);
 });
 
 function getBooks() {
@@ -109,4 +110,56 @@ function clearCreateBookInputs() {
     $("#bookGenre").val("");
     $("#authorName").val("");
     $("#bookDescription").val("");
+}
+
+function findBookByTitle() {
+    var titleToSearch = $("#bookSearch").val();
+
+    $.ajax({
+        url: serverUri + "api/books/search?title=" + titleToSearch,
+        type: 'GET',
+        data: null,
+        success: function (res) {
+            displayBooks(res);
+        },
+        error: function (res) {
+            var errorMessage = res.responseText;
+            if (res.responseJSON && res.responseJSON.Message) {
+                errorMessage = res.responseJSON.Message;
+            }
+            alert("An error occured while searching:\n" + errorMessage);
+        }
+    });
+}
+
+function displayBooks(books) {
+    
+        // remove all cards from before
+        $("#book-template").parent().children("[id!=book-template]").remove();
+
+        var bookTemplate = $("#book-template");
+        //bookTemplate.parent().html("");
+
+        for (var i = 0; i < books.length; i++) {
+
+            var temp = bookTemplate.clone();
+            temp.attr("id", "book_row_" + i);
+            temp.removeAttr('hidden');
+
+            var model = books[i];
+            var str = temp[0].innerHTML;
+            str = str.replace("$$ID$$", model.ID);
+            str = str.replace("$$Title$$", model.Title);
+            str = str.replace("$$Author$$", model.Author);
+            str = str.replace("$$Genre$$", model.Genre);
+            str = str.replace("$$Description$$", model.Description);
+            str = str.replace("$$Quantity$$", model.Quantity);
+            str = str.replace("$$DeleteID$$", model.ID);
+
+            temp[0].innerHTML = str;
+
+
+            temp.appendTo(bookTemplate.parent());
+        }
+
 }
